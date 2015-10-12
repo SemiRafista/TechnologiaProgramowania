@@ -35,5 +35,12 @@ public class NumbersTest2 {
 		numbers2.setNumber(1281235251);
 		numbers2.getNumberInSpecificSystem(2);
 	}
+	public void kwadrat633Test(){
+		numbers = null;
+		assertNull(numbers);
+		numbers = new Numbers();
+		numbers.setNumber(256);
+		assertEquals("10000000",numbers.getNumberInSpecificSystem(2));
+	}
 
 }
