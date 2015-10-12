@@ -23,8 +23,8 @@ public class NumbersTest extends TestCase {
 	
 	public void testGetNumberInSpecificSystem(){
 		numbers.setNumber(15);
-		assertEquals("1111", numbers.getNumberInSpecificSystem(2));
-		assertEquals("f", numbers.getNumberInSpecificSystem(16));
-		assertEquals("17",numbers.getNumberInSpecificSystem(8));
+			assertEquals("1111", numbers.getNumberInSpecificSystem(2));
+			assertEquals("f", numbers.getNumberInSpecificSystem(16));
+			assertEquals("17",numbers.getNumberInSpecificSystem(8));
 	}
 }

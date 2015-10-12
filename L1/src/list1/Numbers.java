@@ -11,10 +11,10 @@ public class Numbers {
 		this.number = number;
 	}
 	
-	public String getNumberInSpecificSystem(int system){
+	public String getNumberInSpecificSystem(int system) throws IllegalArgumentException{
 		if(system<2 || system>16)
-			return null;
-		
+			throw new IllegalArgumentException();
+			
 		return Integer.toString(getNumber(), system);
 	}
 }
