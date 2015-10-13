@@ -7,33 +7,33 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class NumbersTest2 {
-	private Numbers numbers2;
+	private Numbers numbers;
 	
 	@Before
 	public void setUp() throws Exception {
-		numbers2 = new Numbers();
+		numbers = new Numbers();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		numbers2 = null;
+		numbers = null;
 	}
 	
 	@After
 	public void checkIfNull() throws Exception{
-		assertNull(numbers2);
+		assertNull(numbers);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void failTestGetNumberInSpecificSystem(){
-		numbers2.setNumber(50);
-		numbers2.getNumberInSpecificSystem(17);
+		numbers.setNumber(50);
+		numbers.getNumberInSpecificSystem(17);
 	}
 	
 	@Test(timeout=100)
 	public void testTimeOfConvertingNumber(){
-		numbers2.setNumber(1281235251);
-		numbers2.getNumberInSpecificSystem(2);
+		numbers.setNumber(1281235251);
+		numbers.getNumberInSpecificSystem(2);
 	}
 	public void kwadrat633Test(){
 		numbers = null;
