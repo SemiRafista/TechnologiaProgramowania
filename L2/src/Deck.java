@@ -1,6 +1,10 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Random;
+
+//TODO
+//separate deck functionality from constructor and getter methods
+//another class for dealing cards is necessary  
 
 public class Deck{
 	private List<Card> deck = new ArrayList<Card>();
@@ -15,23 +19,33 @@ public class Deck{
 		deckCounter = 0;
 	}
 	
-	public List<Card> GetListOfCardsInDeck(){
+	public List<Card> getListOfCardsInDeck(){
 		return deck;
 	}
-	//losuje z powtorzeniami - fail
-	public void ShuffleDeck(){
-		Collections.shuffle(deck);
+
+	public void shuffleDeck(){
+		List<Card> tempList = new ArrayList<Card>();
+		Random rand = new Random();
+		int index;
+		for(int i=0; i<deck.size(); i++){
+			index = rand.nextInt(52);
+			while(tempList.contains(deck.get(index))){
+				index = rand.nextInt(52);
+			}
+		tempList.add(deck.get(index));
+		}
+	deck = tempList;
 	}
 	
-	private List<Card> SingleDeal(int cardsAmount){
+	private List<Card> singleDeal(int cardsAmount){
 		return deck.subList(deckCounter, deckCounter + cardsAmount + 1); 
 	}
 	
-	public List<List<Card>> DealCardsToPlayers(int playersAmount, int cardsAmount){
+	public List<List<Card>> dealCardsToPlayers(int playersAmount, int cardsAmount){
 	List<List<Card>> allDeals = new ArrayList<List<Card>>();
 		if(playersAmount == 0  || cardsAmount == 0) return null;	
 		for(int i = 0; i < playersAmount; i++){
-			allDeals.add(SingleDeal(cardsAmount));
+			allDeals.add(singleDeal(cardsAmount));
 			deckCounter += cardsAmount;
 		}
 	return allDeals;
