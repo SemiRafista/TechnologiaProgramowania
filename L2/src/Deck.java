@@ -18,7 +18,7 @@ public class Deck{
 	public List<Card> GetListOfCardsInDeck(){
 		return deck;
 	}
-	
+	//losuje z powtorzeniami - fail
 	public void ShuffleDeck(){
 		Collections.shuffle(deck);
 	}
