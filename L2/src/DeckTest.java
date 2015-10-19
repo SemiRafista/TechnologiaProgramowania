@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+
 public class DeckTest {
 	private Deck deck;
 	
@@ -13,8 +14,8 @@ public class DeckTest {
 
 	@Test
 	public void testCardConstructor() {
-		Card karta = new Card(5, "clubs");
-		assertEquals("5 of clubs", karta.GetFullCardName());
+		final Card karta = new Card(5, "clubs");
+		assertEquals("5 of clubs", karta.getFullCardName());
 	}
 	
 	@Test
@@ -24,19 +25,19 @@ public class DeckTest {
 	
 	@Test
 	public void testShuffleMechanism(){
-		Card testCard = deck.GetListOfCardsInDeck().get(5);
+		final Card testCard = deck.GetListOfCardsInDeck().get(5);
 		deck.ShuffleDeck();
 		assertNotEquals(testCard, deck.GetListOfCardsInDeck().get(5));
 	}
 
 	@Test
 	public void testDealWithoutShuffle(){
-		assertEquals(new Card(3, "diamonds").GetFullCardName(), deck.DealCardsToPlayers(3, 3).get(1).get(2).GetFullCardName());
+		assertEquals(new Card(3, "diamonds").getFullCardName(), deck.DealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
 	}
 	
 	@Test
 	public void testDealWithShuffle(){
 		deck.ShuffleDeck();
-		assertNotEquals(new Card(3, "diamonds").GetFullCardName(), deck.DealCardsToPlayers(3, 3).get(1).get(2).GetFullCardName());
+		assertNotEquals(new Card(3, "diamonds").getFullCardName(), deck.DealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
 	}
 }

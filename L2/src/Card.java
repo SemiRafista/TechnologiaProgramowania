@@ -19,15 +19,15 @@ public class Card {
 	}
 	
 	
-	public String GetFullCardName(){
+	public String getFullCardName(){
 		return fullCardName;
 	}
 	
-	public int GetCardValue(){
+	public int getCardValue(){
 		return this.value; 
 	}
 	
-	public String GetCardColor(){
+	public String getCardColor(){
 		return this.color;
 	}
 }
