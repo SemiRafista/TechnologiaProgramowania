@@ -20,24 +20,24 @@ public class DeckTest {
 	
 	@Test
 	public void testDeckConstructor(){
-		assertEquals(52, deck.GetListOfCardsInDeck().size());
+		assertEquals(52, deck.getListOfCardsInDeck().size());
 	}
 	
 	@Test
 	public void testShuffleMechanism(){
-		final Card testCard = deck.GetListOfCardsInDeck().get(5);
-		deck.ShuffleDeck();
-		assertNotEquals(testCard, deck.GetListOfCardsInDeck().get(5));
+		final Card testCard = deck.getListOfCardsInDeck().get(5);
+		deck.shuffleDeck();
+		assertNotEquals(testCard, deck.getListOfCardsInDeck().get(5));
 	}
 
 	@Test
 	public void testDealWithoutShuffle(){
-		assertEquals(new Card(3, "diamonds").getFullCardName(), deck.DealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		assertEquals(new Card(3, "diamonds").getFullCardName(), deck.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
 	}
 	
 	@Test
 	public void testDealWithShuffle(){
-		deck.ShuffleDeck();
-		assertNotEquals(new Card(3, "diamonds").getFullCardName(), deck.DealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		deck.shuffleDeck();
+		assertNotEquals(new Card(3, "diamonds").getFullCardName(), deck.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
 	}
 }

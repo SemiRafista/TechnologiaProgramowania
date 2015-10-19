@@ -15,23 +15,23 @@ public class Deck{
 		deckCounter = 0;
 	}
 	
-	public List<Card> GetListOfCardsInDeck(){
+	public List<Card> getListOfCardsInDeck(){
 		return deck;
 	}
 	
-	public void ShuffleDeck(){
+	public void shuffleDeck(){
 		Collections.shuffle(deck);
 	}
 	
-	private List<Card> SingleDeal(int cardsAmount){
+	private List<Card> singleDeal(int cardsAmount){
 		return deck.subList(deckCounter, deckCounter + cardsAmount + 1); 
 	}
 	
-	public List<List<Card>> DealCardsToPlayers(int playersAmount, int cardsAmount){
+	public List<List<Card>> dealCardsToPlayers(int playersAmount, int cardsAmount){
 	List<List<Card>> allDeals = new ArrayList<List<Card>>();
 		if(playersAmount == 0  || cardsAmount == 0) return null;	
 		for(int i = 0; i < playersAmount; i++){
-			allDeals.add(SingleDeal(cardsAmount));
+			allDeals.add(singleDeal(cardsAmount));
 			deckCounter += cardsAmount;
 		}
 	return allDeals;
