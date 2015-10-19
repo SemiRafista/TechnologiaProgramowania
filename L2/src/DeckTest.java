@@ -6,10 +6,11 @@ import org.junit.Test;
 
 public class DeckTest {
 	private Deck deck;
-	
+	private CardDealer cardDealer;
 	@Before
 	public void setUp() throws Exception {
 		deck = new Deck();
+		cardDealer = new CardDealer(deck);
 	}
 
 	@Test
@@ -26,18 +27,18 @@ public class DeckTest {
 	@Test
 	public void testShuffleMechanism(){
 		final Card testCard = deck.getListOfCardsInDeck().get(5);
-		deck.shuffleDeck();
+		cardDealer.shuffleDeck();
 		assertNotEquals(testCard, deck.getListOfCardsInDeck().get(5));
 	}
 
 	@Test
 	public void testDealWithoutShuffle(){
-		assertEquals(new Card(3, "diamonds").getFullCardName(), deck.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		assertEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
 	}
 	
 	@Test
 	public void testDealWithShuffle(){
-		deck.shuffleDeck();
-		assertNotEquals(new Card(3, "diamonds").getFullCardName(), deck.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		cardDealer.shuffleDeck();
+		assertNotEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
 	}
 }
