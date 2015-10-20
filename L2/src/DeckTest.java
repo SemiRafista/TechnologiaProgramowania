@@ -15,8 +15,13 @@ public class DeckTest {
 
 	@Test
 	public void testCardConstructor() {
-		final Card karta = new Card(5, "clubs");
+		try{
+	  final Card karta = new Card(5, "clubs");
 		assertEquals("5 of clubs", karta.getFullCardName());
+		}
+		catch(PokerException ex){
+		  //TODO
+		}
 	}
 	
 	@Test
@@ -33,12 +38,42 @@ public class DeckTest {
 
 	@Test
 	public void testDealWithoutShuffle(){
-		assertEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		try{
+	  assertEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		}
+		catch(PokerException ex){
+		  //TODO
+		}
 	}
 	
 	@Test
 	public void testDealWithShuffle(){
-		cardDealer.shuffleDeck();
+		try{
+	  cardDealer.shuffleDeck();
 		assertNotEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		}
+		catch(PokerException ex){
+		  //TODO
+		}
+	}
+	
+	@Test(expected=PokerException.class)
+	public void testExceptionInConstructorOfCard() throws PokerException{
+	  try{
+	    new Card(16,"clubs");	    
+	  }
+	  catch(PokerException ex){
+	    throw new PokerException(ex.getMessage());
+	  }
+	}
+	
+	@Test(expected=PokerException.class)
+	public void testExceptionInDealingCards() throws PokerException{
+	  try{
+	  cardDealer.dealCardsToPlayers(10, 6);
+	  }
+	  catch(PokerException ex){
+	    throw new PokerException(ex.getMessage());
+	  }
 	}
 }

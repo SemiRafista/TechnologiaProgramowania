@@ -5,15 +5,18 @@ public class Card {
 	/*
 	 * constructor of class Card, which builds the fullCardName
 	 */
-	Card(int value, String color){
-		this.value = value;
+	Card(int value, String color) throws PokerException{
+	  this.value = value;
 		this.color = color;
+		if(this.color!="clubs" && this.color!="diamonds" && this.color!="hearts" && this.color!="spades")
+		  throw new PokerException("Wrong card color");
 		if(value>10){
 			switch(value){
-			case 11: fullCardName = "Jack of " + color; 
-			case 12: fullCardName = "Queen of " + color;
-			case 13: fullCardName = "King of " + color;
-			case 14: fullCardName = "Ace of " + color;
+			case 11: fullCardName = "Jack of " + color; break;
+			case 12: fullCardName = "Queen of " + color; break;
+			case 13: fullCardName = "King of " + color; break;
+			case 14: fullCardName = "Ace of " + color; break;
+			default : throw new PokerException("Wrong card value");
 			}
 		}
 		else

@@ -6,17 +6,22 @@ import java.util.List;
 //another class for dealing cards is necessary  
 
 public class Deck{
-	protected List<Card> deck = new ArrayList<Card>();
+	private List<Card> deck = new ArrayList<Card>();
 	/*
 	 * constructor of class Deck, building entire deck adding cards to the list
 	 */
 	Deck(){
+	  try{
 		for(int i=2; i<15; i++){
 			deck.add(new Card(i, "clubs"));
 			deck.add(new Card(i, "diamonds"));
 			deck.add(new Card(i, "hearts"));
 			deck.add(new Card(i, "spades"));
 		}
+	  }
+	  catch(PokerException ex){
+	    //TODO
+	  }
 	}
 	
 	/*
