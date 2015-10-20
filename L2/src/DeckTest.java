@@ -1,5 +1,8 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,7 +42,7 @@ public class DeckTest {
 	@Test
 	public void testDealWithoutShuffle(){
 		try{
-	  assertEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+	  assertEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCards(3, 3).get(1).get(2).getFullCardName());
 		}
 		catch(PokerException ex){
 		  //TODO
@@ -50,7 +53,7 @@ public class DeckTest {
 	public void testDealWithShuffle(){
 		try{
 	  cardDealer.shuffleDeck();
-		assertNotEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCardsToPlayers(3, 3).get(1).get(2).getFullCardName());
+		assertNotEquals(new Card(3, "diamonds").getFullCardName(), cardDealer.dealCards(3, 3).get(1).get(2).getFullCardName());
 		}
 		catch(PokerException ex){
 		  //TODO
@@ -70,10 +73,29 @@ public class DeckTest {
 	@Test(expected=PokerException.class)
 	public void testExceptionInDealingCards() throws PokerException{
 	  try{
-	  cardDealer.dealCardsToPlayers(10, 6);
+	  cardDealer.dealCards(10, 6);
 	  }
 	  catch(PokerException ex){
 	    throw new PokerException(ex.getMessage());
+	  }
+	}
+	//This part will be extended as studies goes on
+	//In this part i test mechanism of the game by creating few players and dealing cards to them
+	@Test
+	public void testDealingCardsToPlayers(){
+	  Player player1 = new Player(1);
+	  Player player2 = new Player(2);
+	  Player player3 = new Player(3);
+	  cardDealer.shuffleDeck();
+	  List<List<Card>> allHands = new ArrayList<List<Card>>();
+	  try{
+	  allHands = cardDealer.dealCards(3, 5);
+	  player1.GiveCardsToPlayer(allHands.get(0));
+	  player2.GiveCardsToPlayer(allHands.get(1));
+	  player3.GiveCardsToPlayer(allHands.get(2));
+	  }
+	  catch(PokerException ex){
+	    //TODO
 	  }
 	}
 }
