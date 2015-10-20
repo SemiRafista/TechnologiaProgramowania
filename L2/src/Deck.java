@@ -8,7 +8,7 @@ import java.util.List;
 public class Deck{
 	private List<Card> deck = new ArrayList<Card>();
 	/*
-	 * constructor of class Deck, building entire deck adding cards to the list
+	 * constructor of class Deck, building entire deck by adding cards to the list
 	 */
 	Deck(){
 	  try{

@@ -14,7 +14,7 @@ public class CardDealer{
 	 * Method used by dealCardsToPlayers 
 	 */
 	private List<Card> singleDeal(int cardsAmount){
-		return deck.getListOfCardsInDeck().subList(deckCounter, deckCounter + cardsAmount + 1);
+		return deck.getListOfCardsInDeck().subList(deckCounter, deckCounter + cardsAmount );
 	}
 	
 	//TODO
